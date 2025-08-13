@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import './App.css';
 import { faqData } from './faqData';
 import { icons } from './faqData';
@@ -15,24 +16,34 @@ function Header() {
   );
 }
 
-function FaqList({ faq, icons }) {
-  console.log(icons.plus);
+function FaqList({ faq, iconPlus, iconMinus }) {
+  const [openIndex, setOpenIndex] = useState(null);
+
+  const handleToggle = idx => {
+    setOpenIndex(openIndex === idx ? null : idx);
+  };
 
   return (
     <ul className="accordion__list">
-      {faq.map(item => (
+      {faq.map((item, idx) => (
         <li className="accordion__list-item" key={item.id}>
-          <details className="accordion__details">
+          <details
+            className="accordion__details"
+            open={openIndex === idx}
+            onClick={e => {
+              e.preventDefault();
+              handleToggle(idx);
+            }}>
             <summary className="accordion__question-wrapper">
               <p className="accordion__question text-preset-2">
                 {item.question}
               </p>
               <img
-                className="accordion__icon-plus"
-                src={iconPlus}
+                className="accordion__icon"
+                src={openIndex === idx ? iconMinus : iconPlus}
                 width={30}
                 height={31}
-                alt="Plus icon"
+                alt=""
               />
             </summary>
             <p className="accordion__answer text-preset-3">{item.answer}</p>
@@ -51,11 +62,10 @@ function App() {
   return (
     <>
       <BackgroundImage />
-
       <div className="container">
         <div className="accordion">
           <Header />
-          <FaqList faq={faqData} icons={icons} />
+          <FaqList faq={faqData} iconPlus={iconPlus} iconMinus={iconMinus} />
         </div>
       </div>
     </>
