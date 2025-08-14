@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import './App.css';
 import { faqData } from './faqData';
-import { icons } from './faqData';
-import bgPattern from './assets/background-pattern-mobile.svg';
+
 import iconMinus from './assets/icon-minus.svg';
 import iconPlus from './assets/icon-plus.svg';
 import iconStar from './assets/icon-star.svg';
@@ -61,13 +60,15 @@ function BackgroundImage() {
 function App() {
   return (
     <>
-      <BackgroundImage />
-      <div className="container">
-        <div className="accordion">
-          <Header />
-          <FaqList faq={faqData} iconPlus={iconPlus} iconMinus={iconMinus} />
+      <main>
+        <BackgroundImage />
+        <div className="container">
+          <div className="accordion">
+            <Header />
+            <FaqList faq={faqData} iconPlus={iconPlus} iconMinus={iconMinus} />
+          </div>
         </div>
-      </div>
+      </main>
     </>
   );
 }

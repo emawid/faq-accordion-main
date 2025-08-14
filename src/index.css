@@ -43,7 +43,7 @@ p {
 .text-preset-1 {
   color: var(--color-purple-950, #301534);
   font-family: 'Work Sans';
-  font-size: 2rem;
+  font-size: clamp(2rem, 0.569rem + 6.107vw, 3.5rem);
   font-style: normal;
   font-weight: 700;
   line-height: normal;
@@ -52,7 +52,7 @@ p {
 .text-preset-2 {
   color: var(--color-purple-950, #301534);
   font-family: 'Work Sans';
-  font-size: 1rem;
+  font-size: clamp(1rem, 0.881rem + 0.509vw, 1.125rem);
   font-style: normal;
   font-weight: 600;
   line-height: normal;
@@ -61,7 +61,7 @@ p {
 .text-preset-3 {
   color: var(--color-purple-600, #8b6990);
   font-family: 'Work Sans';
-  font-size: 0.875rem;
+  font-size: clamp(0.875rem, 0.756rem + 0.509vw, 1rem);
   font-style: normal;
   font-weight: 400;
   line-height: 150%; /* 1.3125rem */
@@ -69,7 +69,7 @@ p {
 
 .accordion__bg-container {
   background-color: var(--color-purple-950);
-  height: 232px;
+  height: clamp(14.5rem, calc(8.9286rem + 23.8095vw), 20rem);
   background-image: url('./assets/background-pattern-mobile.svg');
   background-repeat: no-repeat;
   background-size: cover;
@@ -86,13 +86,13 @@ p {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: var(--spacing-300);
-  padding: var(--spacing-300);
+  gap: clamp(var(--spacing-300), 1.023rem + 2.036vw, var(--spacing-400));
+  padding: clamp(var(--spacing-300), 0.546rem + 4.071vw, var(--spacing-500));
   border-radius: 8px;
   background: var(--colors-white, #fff);
   box-shadow: 0 32px 56px 0 rgba(80, 0, 118, 0.1);
   z-index: 1;
-  margin-top: -101.5px;
+  margin-top: clamp(-6.34375rem, calc(-3.21875rem - 6.5104vw), -9.5625rem);
   position: relative;
 }
 
@@ -139,12 +139,7 @@ p {
 }
 
 @media (min-width: 768px) {
-  .accordion {
-    margin-top: -153px;
-  }
-
   .accordion__bg-container {
-    height: 320px;
     background-image: url('./assets/background-pattern-desktop.svg');
   }
 }
