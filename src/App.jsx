@@ -15,7 +15,7 @@ function Header() {
   );
 }
 
-function FaqList({ faq, iconPlus, iconMinus }) {
+function FaqList({ faqItem, iconPlusItem, iconMinusItem }) {
   const [openIndex, setOpenIndex] = useState(null);
 
   const handleToggle = idx => {
@@ -24,7 +24,7 @@ function FaqList({ faq, iconPlus, iconMinus }) {
 
   return (
     <ul className="accordion__list">
-      {faq.map((item, idx) => (
+      {faqItem.map((item, idx) => (
         <li className="accordion__list-item" key={item.id}>
           <details
             className="accordion__details"
@@ -33,16 +33,14 @@ function FaqList({ faq, iconPlus, iconMinus }) {
               e.preventDefault();
               handleToggle(idx);
             }}>
-            <summary className="accordion__question-wrapper">
-              <p className="accordion__question text-preset-2">
-                {item.question}
-              </p>
+            <summary className="accordion__question-wrapper accordion__question text-preset-2">
+              {item.question}
               <img
                 className="accordion__icon"
-                src={openIndex === idx ? iconMinus : iconPlus}
+                src={openIndex === idx ? iconMinusItem : iconPlusItem}
                 width={30}
                 height={31}
-                alt=""
+                alt={openIndex === idx ? 'Collapse section' : 'Expand section'}
               />
             </summary>
             <p className="accordion__answer text-preset-3">{item.answer}</p>
@@ -65,7 +63,11 @@ function App() {
         <div className="container">
           <div className="accordion">
             <Header />
-            <FaqList faq={faqData} iconPlus={iconPlus} iconMinus={iconMinus} />
+            <FaqList
+              faqItem={faqData}
+              iconPlusItem={iconPlus}
+              iconMinusItem={iconMinus}
+            />
           </div>
         </div>
       </main>
